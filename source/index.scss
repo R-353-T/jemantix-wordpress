@@ -92,12 +92,17 @@ header {
             @apply grid;
             grid-template-columns: 48px 1fr 64px 96px;
 
+            th,
             td {
-                @apply text-sm font-bold px-1;
+                @apply text-xs font-bold p-1;
 
                 &:first-child {
                     @apply text-right;
                 }
+            }
+
+            th {
+                @apply py-2 text-sm text-left bg-white text-primary-950;
             }
 
             &:nth-child(2n+1) {
