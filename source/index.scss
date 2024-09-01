@@ -1,0 +1,109 @@
+/*************************************************/
+/** External dependencies                       **/
+/*************************************************/
+
+/** Tailwind.css **/
+
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+
+/** Animate.css **/
+
+@import "animate.css/animate.min.css";
+
+/*************************************************/
+/** Internal dependencies                       **/
+/*************************************************/
+
+body {
+    @apply bg-primary-800;
+    font-family: sans-serif;
+}
+
+header {
+    @apply flex flex-col p-4 text-white bg-primary-900;
+
+    h1 {
+        @apply font-bold uppercase text-2xl;
+    }
+
+    p {
+        @apply font-bold uppercase text-xs;
+    }
+
+    nav {
+        @apply flex flex-wrap mt-4;
+
+        a {
+            @apply bg-primary-950 px-4 py-2 text-xs font-bold uppercase hover:bg-primary-800
+            duration-300;
+        }
+    }
+}
+
+.download {
+    @apply flex flex-col text-white bg-primary-900 rounded max-w-3xl
+    mx-auto my-4 px-4 py-2 gap-2;
+
+    h3 {
+        @apply uppercase font-bold tracking-wider;
+    }
+
+    &>div {
+        @apply flex justify-start gap-1;
+
+        a {
+            @apply flex bg-primary-950 text-white items-center px-4 py-2
+            uppercase font-bold pl-12 text-xs hover:bg-primary-800
+            duration-300;
+    
+            &.firefox {
+                background-image: url('/wp-content/themes/jemantix/asset/firefox.png');
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: 12px center;
+            }
+    
+            &.chrome {
+                background-image: url('/wp-content/themes/jemantix/asset/chrome.png');
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: 12px center;
+            }
+        }
+    }
+}
+
+.leaderboard {
+
+    @apply m-4 bg-primary-900 text-white p-4 flex flex-col gap-4 rounded;
+
+    h2 { @apply text-xl uppercase font-bold tracking-wider; }
+    h3 { @apply text-lg uppercase font-bold tracking-wider underline; }
+
+    section {
+        @apply bg-primary-800 p-4 rounded flex flex-col gap-4;
+    }
+
+    table {
+        @apply flex flex-col;
+        tr {
+            @apply grid;
+            grid-template-columns: 48px 1fr 64px 96px;
+
+            td {
+                @apply text-sm font-bold px-1;
+
+                &:first-child {
+                    @apply text-right;
+                }
+            }
+
+            &:nth-child(2n+1) {
+                background-color: rgba(255,255,255,0.05);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+path: ./dist/
+url: http://localhost:8080/
+color: false
+user: root
+merge: true
+
+config create:
+    dbname: jemantix
+    dbuser: root
+    dbpass: toor
+    force: true
+    dbcharset: utf8mb4
+    dbprefix: jemantix_
+    extra-php: |
+        define( 'WP_DEBUG', true );
+        define( 'WP_DEBUG_LOG', true );
+
+core download:
+    skip-content: true
+    force: true
+    locale: en_US
+
+core install:
+  title: Jemantix
+  admin_user: root
+  admin_password: toor
+  admin_email: support@r353t.net
+  skip-email: true
+  locale: en_US
+
+core verify_checksums:
+  include-root: true
+  locale: en_US
+
+plugin install:
+  activate: true
+
+search-replace:
+    dbname: jemantix
+    dbuser: root
+    dbpass: toor
+    dbcharset: utf8mb4
+    dbprefix: jemantix_
+
+quiet: false

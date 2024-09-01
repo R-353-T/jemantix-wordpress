@@ -1,0 +1,7 @@
+{
+    "verbose": false,
+    "watch": ["./source/**"],
+    "ext": "php,js,html,scss",
+    "delay": 1000,
+    "exec": "npm run build"
+}

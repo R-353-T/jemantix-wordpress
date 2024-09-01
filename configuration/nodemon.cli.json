@@ -1,0 +1,7 @@
+{
+    "verbose": false,
+    "watch": [ "./script/**" ],
+    "ext": "js",
+    "delay": 1000,
+    "exec": "node ./script/build.js"
+}

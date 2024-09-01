@@ -1,0 +1,49 @@
+{
+  "name": "jemantix",
+  "version": "1.0.0",
+  "description": "Leaderboard for jemantix addon",
+  "main": "./script/build.js",
+  "type": "module",
+  "keywords": [
+    "api",
+    "jemantix",
+    "cémantix",
+    "pédantix"
+  ],
+  "author": "R353T_",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev:cli": "npx nodemon --config ./configuration/nodemon.cli.json",
+    "dev": "npx nodemon --config ./configuration/nodemon.json",
+    "build": "node ./script/build.js",
+    "serve": "cd ./dist && php -S localhost:8080",
+
+    "wpcli": "npm run wpcli:download && npm run wpcli:configure && npm run wpcli:install",
+    "wpcli:download": "php ./vendor/wp-cli.phar core download",
+    "wpcli:configure": "php ./vendor/wp-cli.phar config create",
+    "wpcli:install": "php ./vendor/wp-cli.phar core install",
+
+    "js:lint": "npx eslint ./source --config ./configuration/eslint.config.js --fix",
+    "php:lint": "npm run phpcbf:lint && npm run phpcs:lint",
+    "phpcs:lint": "php ./vendor/phpcs.phar -p --standard=PSR12 --ignore=*.css,*.scss,*.js ./source",
+    "phpcbf:lint": "php ./vendor/phpcbf.phar -p --standard=PSR12 --ignore=*.css,*.scss,*.js ./source",
+
+    "webpack": "npx webpack build --config ./configuration/webpack.config.js",
+    "postcss": "npx postcss ./source/index.scss -o ./dist/wp-content/themes/jemantix/index.min.css --config ./configuration/postcss.config.js"
+  },
+  "devDependencies": {
+    "animate.css": "^4.1.1",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.5",
+    "eslint": "^9.9.1",
+    "nodemon": "^3.1.4",
+    "postcss": "^8.4.41",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.0",
+    "sass": "^1.77.8",
+    "tailwindcss": "^3.4.10",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
