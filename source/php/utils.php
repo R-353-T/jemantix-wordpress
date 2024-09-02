@@ -71,6 +71,7 @@ function displayRows($rows)
 
 function displayTodayCemantixRows()
 {
+    date_default_timezone_set("Europe/Paris");
     $date_format = 'Y-m-d H:i:s';
     $date = DateTime::createFromFormat($date_format, date('Y-m-d') . " 00:00:00");
 
@@ -85,21 +86,23 @@ function displayTodayCemantixRows()
 
 function displayYesterdayCemantixRows()
 {
+    date_default_timezone_set("Europe/Paris");
     $date_format = 'Y-m-d H:i:s';
-    $date = DateTime::createFromFormat(
-        $date_format,
-        date('Y-m-d') . " 00:00:00"
-    );
 
-    $yesterday = DateTime::createFromFormat(
+    $start = DateTime::createFromFormat(
         $date_format,
         date('Y-m-d', strtotime("-1 days")) . " 00:00:00"
     );
 
+    $end = DateTime::createFromFormat(
+        $date_format,
+        date('Y-m-d') . " 00:00:00"
+    );
+
     global $wpdb;
     $query = "SELECT * FROM jemantix_leaderboard "
-    . " WHERE gamemode = 1 AND date <= '" . $date->format($date_format) . "'"
-    . " AND date >= '" . $yesterday->format($date_format) . "'"
+    . " WHERE gamemode = 1 AND date <= '" . $end->format($date_format) . "'"
+    . " AND date >= '" . $start->format($date_format) . "'"
     . " ORDER BY score ASC LIMIT 50";
 
     $results = $wpdb->get_results($query, OBJECT);
@@ -108,33 +111,34 @@ function displayYesterdayCemantixRows()
 
 function displayTodayPedantixRows()
 {
+    date_default_timezone_set("Europe/Paris");
+    global $wpdb;
     $date_format = 'Y-m-d H:i:s';
     $current_date = DateTime::createFromFormat($date_format, date('Y-m-d H:i:s'));
     $current_date_time = getdate($current_date->getTimestamp());
 
-    if ($current_date_time["hours"] > 12) {
+    if ($current_date_time["hours"] >= 12) {
         $start = DateTime::createFromFormat($date_format, date('Y-m-d') . " 12:00:00");
     } else {
         $start = DateTime::createFromFormat($date_format, date('Y-m-d', strtotime("-1 days")) . " 12:00:00");
     }
 
-    global $wpdb;
     $query = "SELECT * FROM jemantix_leaderboard "
-    . " WHERE gamemode = 2 AND date >= '" . $start->format($date_format) . "'"
-    . " ORDER BY score ASC LIMIT 50";
-
+        . " WHERE gamemode = 2 AND date >= '" . $start->format($date_format) . "'"
+        . " ORDER BY score ASC LIMIT 50";
     $results = $wpdb->get_results($query, OBJECT);
     displayRows($results);
 }
 
 function displayYesterdayPedantixRows()
 {
-
+    date_default_timezone_set("Europe/Paris");
+    global $wpdb;
     $date_format = 'Y-m-d H:i:s';
     $current_date = DateTime::createFromFormat($date_format, date('Y-m-d H:i:s'));
     $current_date_time = getdate($current_date->getTimestamp());
 
-    if ($current_date_time["hours"] > 12) {
+    if ($current_date_time["hours"] >= 12) {
         $start = DateTime::createFromFormat($date_format, date('Y-m-d', strtotime("-1 days")) . " 12:00:00");
         $end = DateTime::createFromFormat($date_format, date('Y-m-d') . " 12:00:00");
     } else {
@@ -142,7 +146,6 @@ function displayYesterdayPedantixRows()
         $end = DateTime::createFromFormat($date_format, date('Y-m-d', strtotime("-1 days")) . " 12:00:00");
     }
 
-    global $wpdb;
     $query = "SELECT * FROM jemantix_leaderboard "
     . " WHERE gamemode = 2 AND date >= '" . $start->format($date_format) . "'"
     . " AND date <= '" . $end->format($date_format) . "'"

@@ -22,7 +22,8 @@ body {
 }
 
 header {
-    @apply flex flex-col p-4 text-white bg-primary-900;
+    @apply flex flex-col p-4 text-white bg-primary-900 max-w-3xl rounded-b mx-auto
+    border-2 border-primary-950 border-t-0;
 
     h1 {
         @apply font-bold uppercase text-2xl;
@@ -38,25 +39,28 @@ header {
         a {
             @apply bg-primary-950 px-4 py-2 text-xs font-bold uppercase hover:bg-primary-800
             duration-300;
+
+            &:first-child { @apply rounded-l; }
+            &:last-child { @apply rounded-r; } 
         }
     }
 }
 
 .download {
     @apply flex flex-col text-white bg-primary-900 rounded max-w-3xl
-    mx-auto my-4 px-4 py-2 gap-2;
+    mx-auto my-8 p-4 gap-2 border-2 border-primary-950;
 
     h3 {
         @apply uppercase font-bold tracking-wider;
     }
 
     &>div {
-        @apply flex justify-start gap-1;
+        @apply flex justify-start gap-1 bg-primary-800 rounded p-4 border-2 border-primary-950;
 
         a {
-            @apply flex bg-primary-950 text-white items-center px-4 py-2
-            uppercase font-bold pl-12 text-xs hover:bg-primary-800
-            duration-300;
+            @apply flex bg-primary-950 text-white items-center p-4
+            uppercase font-bold pl-12 text-xs hover:bg-primary-900
+            duration-300 rounded;
     
             &.firefox {
                 background-image: url('/wp-content/themes/jemantix/asset/firefox.png');
@@ -64,9 +68,14 @@ header {
                 background-repeat: no-repeat;
                 background-position: 12px center;
             }
-    
             &.chrome {
                 background-image: url('/wp-content/themes/jemantix/asset/chrome.png');
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: 12px center;
+            }
+            &.github {
+                background-image: url('/wp-content/themes/jemantix/asset/github.png');
                 background-size: 24px;
                 background-repeat: no-repeat;
                 background-position: 12px center;
@@ -77,13 +86,15 @@ header {
 
 .leaderboard {
 
-    @apply m-4 bg-primary-900 text-white p-4 flex flex-col gap-4 rounded;
+    @apply my-8 bg-primary-900 text-white p-4 flex flex-col gap-4 rounded
+    max-w-3xl mx-auto border-2 border-primary-950;
 
     h2 { @apply text-xl uppercase font-bold tracking-wider; }
     h3 { @apply text-lg uppercase font-bold tracking-wider underline; }
 
     section {
-        @apply bg-primary-800 p-4 rounded flex flex-col gap-4;
+        @apply bg-primary-800 p-4 rounded flex flex-col gap-4
+        border-2 border-primary-950;
     }
 
     table {
