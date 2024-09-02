@@ -51,7 +51,21 @@ header {
     mx-auto my-8 p-4 gap-2 border-2 border-primary-950;
 
     h3 {
-        @apply uppercase font-bold tracking-wider;
+        @apply uppercase font-bold tracking-wider underline;
+    }
+
+    p.warning {
+        @apply bg-gradient-to-br from-yellow to-yellow-600 rounded p-4 py-1  text-xs text-red italic
+        font-bold tracking-wider;
+    }
+
+    p.info {
+        @apply bg-gradient-to-br from-green to-green-700 rounded p-4 py-1 text-xs italic uppercase
+        font-bold tracking-wider;
+    }
+
+    h4 {
+        @apply font-bold text-lg;
     }
 
     &>div {

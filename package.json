@@ -1,6 +1,6 @@
 {
   "name": "jemantix",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Leaderboard for jemantix addon",
   "main": "./script/build.js",
   "type": "module",
